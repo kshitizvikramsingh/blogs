@@ -1,0 +1,21 @@
+body{
+    background-color: rgb(36, 37, 37);
+    color: aliceblue;
+    text-align: center;
+   
+}
+#list {
+
+    list-style-position:inside;
+}
+a {
+    text-decoration: none;
+  }
+
+.hero .title{
+    color: rgb(221, 221, 221);
+}
+
+.hero{
+    background-color: rgb(136, 8, 78);
+}

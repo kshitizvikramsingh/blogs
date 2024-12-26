@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="css/snow.css" rel="stylesheet">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #3f3f46;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background-color: rgb(255, 255, 255);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        .login-container h2 h4{
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px -10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .login-container button:hover {
+            background-color: #45a049;
+        }
+        .login-container .signup-link {
+            text-align: center;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body >
+    
+       
+      
+    <div class="login-container">
+        <h2> <img src="https://logos-world.net/wp-content/uploads/2021/02/British-Airways-Symbol.png" style="width:50px"><br>Login to CALLBA</h2>
+        
+
+        <form action="/login" method="POST">
+            <input type="text" name="username" placeholder="Username" required id="username">
+            <input type="text" name="email" placeholder="Email" required id="email">
+            <input type="password" name="password" placeholder="Password" required id="password">
+            <button type="submit">Login</button>
+            <h4> Designed and Developed by Kshitiz Vikram Singh</h4>
+        </form>
+        
+    </div>
+
+</body>
+<script>
+    function createSnow() {
+  const snow = document.createElement("div");
+
+  snow.innerHTML = "<img id='snowflake' src='https://static.vecteezy.com/system/resources/previews/021/115/771/non_2x/white-circle-free-png.png'>";
+  snow.classList.add("snow");
+
+  document.body.appendChild(snow);
+
+  snow.style.left = Math.random() * 100 + "vw";
+
+  snow.style.animationDuration = math.random() * 5 + 8 + "s";
+
+  setTimeout(() => {
+    snow.remove();
+  }, 5000);
+}
+
+setInterval(createSnow, 800);
+</script>
+</html>
