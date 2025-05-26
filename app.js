@@ -64,13 +64,13 @@ try {
 
 
 app.get("/home",(req,res)=>{
-    if(req.session.user_id){
-        res.render("home.ejs")
-    }
-    else{
-        res.redirect("/login")
-    }
     
+        res.render("home.ejs")
+    
+    
+})
+app.get("/test",(req, res)=>{
+    res.render("test.ejs")
 })
 app.get("/login",(req,res)=>{
     

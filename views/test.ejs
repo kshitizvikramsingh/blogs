@@ -1,0 +1,198 @@
+<%- include ("partials/header.ejs") %>
+  <style>
+ 
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.box {
+  margin: 100px auto;
+  max-width: 950px;
+  padding: 20px;
+  background: #33333367;
+  color: white;
+  border-radius: 8px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.box.visible {
+  opacity: 1;
+  transform: translateY(0);
+ 
+}
+
+ h1{
+    text-align: center;
+    margin-top: 100 px;
+    color: aliceblue;
+  }
+.special{
+  border-left: 4px solid #007BFF;
+  border-radius: 4px;
+  padding: 10px;
+}
+.comment-section {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #f9f9f94b;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 16px;
+  resize: none;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.comment-list {
+  margin-top: 20px;
+}
+
+.comment {
+  background: rgba(255, 255, 255, 0.295);
+  padding: 10px;
+  margin-top: 10px;
+  border-left: 4px solid #007BFF;
+  border-radius: 4px;
+}
+
+  </style>
+
+
+<body>
+  <div class="box">
+    <h1>The importance of Self-Reflection</h1>
+  </div>
+
+
+<div class="box">
+
+Life is a beautiful poem of misery, happiness, love and the unknown future. We go through it feeling a bit of everything in time.
+<br>
+<br>
+<div class="special">
+  The universe has a way of showing everything right here on Earth in its own way through this space-time continuum.
+</div>
+<br>
+While going through it all and living our lives, one important aspect of it all is to look back and record it to share with others.
+</div>
+<div class="box">
+  <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*hQ5pU3kJHfV1iBmb.jpg" class="img-fluid" alt="Soft skills ladder">
+
+
+</div>
+<div class="box">
+  <div class="special">
+    Life is a circle with many turns around! ⭕ The path to a better human is to look back and realize of our mistakes, our right decisions to become a better version of ourselves like we make better software through improvements in continuous way. It is like rewiring our brain, upgrading it to become better.
+
+  </div>
+  <br>
+  And doing all this in space-time, without realizing we become old. Leaving something for the future generations to learn from and progress forward!
+
+Just like the universe, we live our lives with birth and deaths, and then rebirth again. The process continues with or without us. I feel lucky to be in a position to absorb it all and be able to write it for someone out there.
+<br>
+<br>
+<div class="special">
+It becomes our moral duty without even realizing to contribute towards making this society, a better place for everyone.
+  </div>
+</div>
+<div class="box">
+<div class="comment-section">
+  <h2>Leave a Comment</h2>
+  <textarea id="commentInput" placeholder="Write your comment here..."></textarea>
+  <button onclick="addComment()">Post Comment</button>
+  <div id="commentList" class="comment-list"></div>
+</div>
+</div>
+</body>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const boxes = document.querySelectorAll('.box');
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          } else {
+            entry.target.classList.remove('visible');
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+      }
+    );
+
+    boxes.forEach(box => observer.observe(box));
+  });
+</script>
+
+<script>
+  const commentInput = document.getElementById("commentInput");
+  const commentList = document.getElementById("commentList");
+
+  // Load stored comments from localStorage
+  window.onload = function () {
+    const savedComments = JSON.parse(localStorage.getItem("comments")) || [];
+    savedComments.forEach(text => {
+      displayComment(text);
+    });
+  };
+
+  function addComment() {
+    const commentText = commentInput.value.trim();
+
+    if (commentText === "") {
+      alert("Please write a comment.");
+      return;
+    }
+
+    displayComment(commentText);
+
+    // Save to localStorage
+    const savedComments = JSON.parse(localStorage.getItem("comments")) || [];
+    savedComments.unshift(commentText); // Newest on top
+    localStorage.setItem("comments", JSON.stringify(savedComments));
+
+    commentInput.value = "";
+  }
+
+  function displayComment(text) {
+    const newComment = document.createElement("div");
+    newComment.className = "comment";
+    newComment.innerText = text;
+    commentList.prepend(newComment);
+  }
+</script>
+
+
+
+
+
+</html>
