@@ -1,0 +1,198 @@
+<%- include ("partials/header.ejs") %>
+  <style>
+ 
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.box {
+  margin: 100px auto;
+  max-width: 950px;
+  padding: 20px;
+  background: #33333367;
+  color: white;
+  border-radius: 8px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.box.visible {
+  opacity: 1;
+  transform: translateY(0);
+ 
+}
+
+ h1{
+    text-align: center;
+    margin-top: 100 px;
+    color: aliceblue;
+  }
+.special{
+  border-left: 4px solid #007BFF;
+  border-radius: 4px;
+  padding: 10px;
+}
+.comment-section {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #f9f9f94b;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 16px;
+  resize: none;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.comment-list {
+  margin-top: 20px;
+}
+
+.comment {
+  background: rgba(255, 255, 255, 0.295);
+  padding: 10px;
+  margin-top: 10px;
+  border-left: 4px solid #007BFF;
+  border-radius: 4px;
+}
+
+  </style>
+
+
+<body>
+  <div class="box">
+    <h1>The Situation of Work Culture in India</h1>
+  </div>
+
+
+<div class="box">
+
+In the 6 years of my career here in India, the one thing that I have realised is it’s toxic work culture.
+<br>
+<br>
+<div class="special">
+Most people in India are extremely self-centered and would only aim for money.
+</div>
+<br>
+What makes us human is our ability to think with perspectives, put heart into our decisions, be emotional yet people here usually our more catered towards practicality. Not that it needs to be neglected but there needs to be a perfect balance of each ingredient.
+</div>
+<div class="box">
+  <img src="https://blogimage.vantagecircle.com/vcblogimage/en/2024/08/Workculture.png" class="img-fluid" alt="Work culture">
+
+
+</div>
+<div class="box">
+  <div class="special">
+The office politics does not help anyone in the long run and ruins the precious time that we have been allotted by the creator.
+  </div>
+  <br>
+  Somehow, I feel like it is high time for us to come together for our nation, for our planet, to be able to make humanity move the needle forward and for future generations to have something to look forward to. 
+<br>
+<br>
+<div class="special">
+I encourage people of India to think culture as a vital pillar of a company.
+  </div>
+</div>
+<div class="box">
+  <img src="https://media.licdn.com/dms/image/v2/D4D12AQH6cjouMp2uuQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1693856848309?e=2147483647&v=beta&t=7waSOIPmFwgXvyBsMn7BcDWtqHIGa9fpbN5xM1evZkM" class="img-fluid" alt="Together, we win!">
+</div>
+<div class="box">
+<div class="comment-section">
+  <h2>Leave a Comment</h2>
+  <textarea id="commentInput" placeholder="Write your comment here..."></textarea>
+  <button onclick="addComment()">Post Comment</button>
+  <div id="commentList" class="comment-list"></div>
+</div>
+</div>
+</body>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const boxes = document.querySelectorAll('.box');
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          } else {
+            entry.target.classList.remove('visible');
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+      }
+    );
+
+    boxes.forEach(box => observer.observe(box));
+  });
+</script>
+
+<script>
+  const commentInput = document.getElementById("commentInput");
+  const commentList = document.getElementById("commentList");
+
+  // Load stored comments from localStorage
+  window.onload = function () {
+    const savedComments = JSON.parse(localStorage.getItem("comments")) || [];
+    savedComments.forEach(text => {
+      displayComment(text);
+    });
+  };
+
+  function addComment() {
+    const commentText = commentInput.value.trim();
+
+    if (commentText === "") {
+      alert("Please write a comment.");
+      return;
+    }
+
+    displayComment(commentText);
+
+    // Save to localStorage
+    const savedComments = JSON.parse(localStorage.getItem("comments")) || [];
+    savedComments.unshift(commentText); // Newest on top
+    localStorage.setItem("comments", JSON.stringify(savedComments));
+
+    commentInput.value = "";
+  }
+
+  function displayComment(text) {
+    const newComment = document.createElement("div");
+    newComment.className = "comment";
+    newComment.innerText = text;
+    commentList.prepend(newComment);
+  }
+</script>
+
+
+
+
+
+</html>

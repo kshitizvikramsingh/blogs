@@ -72,6 +72,12 @@ app.get("/home",(req,res)=>{
 app.get("/test",(req, res)=>{
     res.render("test.ejs")
 })
+app.get("/life",(req, res)=>{
+    res.render("life.ejs")
+})
+app.get("/cultureInIndia",(req, res)=>{
+    res.render("culture.ejs")
+})
 app.get("/login",(req,res)=>{
     
     res.render("login.ejs")
