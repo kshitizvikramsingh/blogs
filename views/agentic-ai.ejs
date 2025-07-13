@@ -1,0 +1,243 @@
+<%- include ("partials/header.ejs") %>
+  <style>
+ 
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.box {
+  margin: 100px auto;
+  max-width: 950px;
+  padding: 20px;
+  background: #33333367;
+  color: white;
+  border-radius: 8px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.box.visible {
+  opacity: 1;
+  transform: translateY(0);
+ 
+}
+
+ h1{
+    text-align: center;
+    margin-top: 100 px;
+    color: aliceblue;
+  }
+.special{
+  border-left: 4px solid #007BFF;
+  border-radius: 4px;
+  padding: 10px;
+}
+.comment-section {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #f9f9f94b;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 16px;
+  resize: none;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.comment-list {
+  margin-top: 20px;
+}
+
+.comment {
+  background: rgba(255, 255, 255, 0.295);
+  padding: 10px;
+  margin-top: 10px;
+  border-left: 4px solid #007BFF;
+  border-radius: 4px;
+}
+#author{
+    text-align: center;
+}
+  </style>
+
+
+<body>
+  <div class="box">
+    <h1>Agentic AI – A New Dawn of Autonomous Intelligence</h1>
+  </div>
+<div class="box" id="author">
+    Written By: Gautam <br>
+    Powered by thoughts, emotion, and machine intelligence.
+</div>
+
+<div class="box">
+<div class="special">
+RIP Diogo Jota. Cherish every moment of your life.
+</div>
+<br>
+Life often reminds us how fragile and beautiful each moment is. The loss of someone like Diogo Jota is a stark reminder that time is our most limited resource. While we mourn, we also reflect—on how we live, how we work, and how we use technology to extend our reach and impact.
+
+<br>
+<br>
+
+<div class="special">
+What is Agentic AI?
+</div>
+<br>
+
+Agentic AI goes beyond the reactive nature of traditional AI systems. It is proactive, autonomous, and capable of setting and pursuing its own goals. These AI systems behave more like digital agents than mere tools.
+<br>
+“Agentic AI is not told what to do—it figures out what to do.”
+</div>
+<div class="box">
+  <img src="https://incubator.ucf.edu/wp-content/uploads/2023/07/artificial-intelligence-new-technology-science-futuristic-abstract-human-brain-ai-technology-cpu-central-processor-unit-chipset-big-data-machine-learning-cyber-mind-domination-generative-ai-scaled-1-1500x1000.jpg" class="img-fluid" alt="Artificial Intelligence">
+
+
+</div>
+<div class="box">
+  <div class="special">
+How Does It Work?
+</div>
+  <br>
+Agentic AI generally includes:<br>
+<li>	Goal Orientation – Defined objectives or self-generated targets </li>
+<li>	Memory – Ability to recall and learn from previous tasks </li>
+<li>	Planning – Breaking down objectives into executable steps </li>
+<li>	Autonomy – Minimal or no human intervention required </li>
+
+  <br>
+<br>
+<div class="special">
+Examples in the Wild
+  </div>
+  <br>
+  Agentic systems are already emerging:<br>
+  <li>	AutoGPT – Loops through planning, researching, and executing steps toward a goal </li>
+<li>AI Assistants – From scheduling your week to handling your inbox </li>
+<li>	Coding Agents – AI that can build apps or debug code end-to-end </li>
+<br>
+<div class="special">
+Sample Prompt for Agentic AI
+  </div>
+  <br>
+  "You are an autonomous AI tasked with launching a blog site on tech trends. Gather sources, design layout, write the first post, and publish it. Evaluate your work after each step."
+<br>
+<br>
+  <div class="special">
+    What’s at Stake?
+</div>
+<br>
+While the promise is huge, there are risks. Who defines an AI’s goals? What happens when it misinterprets human intent? Will it act ethically—or only efficiently?
+
+</div>
+
+<div class="box">
+    <div class="special">Final Thoughts</div>
+Just like in life, AI is learning to act with purpose. But unlike us, it doesn’t feel love, regret, or loss. That’s what makes us human. So as we move toward an agentic future, let’s not forget to be present, mindful, and intentional in our own lives.
+</div>
+<div class="box">
+    RIP Diogo Jota. Build agents for the future—but never forget to live today.
+</div>
+<div class="box">
+  <img src="https://eq47oznpfsr.exactdn.com/wp-content/uploads/2024/08/What-Is-AI-Featured.jpg?lossy=1&quality=70&ssl=1" class="img-fluid" alt="AI">
+</div>
+<div class="box">
+<div class="comment-section">
+  <h2>Leave a Comment</h2>
+  <textarea id="commentInput" placeholder="Write your comment here..."></textarea>
+  <button onclick="addComment()">Post Comment</button>
+  <div id="commentList" class="comment-list"></div>
+</div>
+</div>
+</body>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const boxes = document.querySelectorAll('.box');
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          } else {
+            entry.target.classList.remove('visible');
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+      }
+    );
+
+    boxes.forEach(box => observer.observe(box));
+  });
+</script>
+
+<script>
+  const commentInput = document.getElementById("commentInput");
+  const commentList = document.getElementById("commentList");
+
+  // Load stored comments from localStorage
+  window.onload = function () {
+    const savedComments = JSON.parse(localStorage.getItem("comments")) || [];
+    savedComments.forEach(text => {
+      displayComment(text);
+    });
+  };
+
+  function addComment() {
+    const commentText = commentInput.value.trim();
+
+    if (commentText === "") {
+      alert("Please write a comment.");
+      return;
+    }
+
+    displayComment(commentText);
+
+    // Save to localStorage
+    const savedComments = JSON.parse(localStorage.getItem("comments")) || [];
+    savedComments.unshift(commentText); // Newest on top
+    localStorage.setItem("comments", JSON.stringify(savedComments));
+
+    commentInput.value = "";
+  }
+
+  function displayComment(text) {
+    const newComment = document.createElement("div");
+    newComment.className = "comment";
+    newComment.innerText = text;
+    commentList.prepend(newComment);
+  }
+</script>
+
+
+
+
+
+</html>

@@ -72,6 +72,9 @@ app.get("/home",(req,res)=>{
 app.get("/test",(req, res)=>{
     res.render("test.ejs")
 })
+app.get("/agentic-ai",(req, res)=>{
+    res.render("agentic-ai.ejs")
+})
 app.get("/life",(req, res)=>{
     res.render("life.ejs")
 })
